@@ -10,9 +10,11 @@ load_dotenv()
 
 app =  FastAPI(title="Klosanow Ai")
 
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS').split()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = [f'{os.getenv('CORS_ALLOWED_ORIGINS')}'],
+    allow_origins = CORS_ALLOWED_ORIGINS,
     allow_credentials= False,
     allow_methods = ['POST'],
     allow_headers=["*"],
